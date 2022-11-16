@@ -7,8 +7,8 @@
 int[] IntSpaceSeparetedInput(string series, out bool areNumbers)
 {
     string[] numbers = series.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-    areNumbers = true;
     int[] result = new int[numbers.Length];
+    areNumbers = true;
     int incorrect = 0;
     for (int i = 0, j = 0; i < numbers.Length; i++)
     {
@@ -24,24 +24,21 @@ int[] IntSpaceSeparetedInput(string series, out bool areNumbers)
         areNumbers = false;
         Array.Resize(ref result, 1);
     }
-    else
-    {
-        Array.Resize(ref result, result.Length - incorrect);
-    }
+    else Array.Resize(ref result, result.Length - incorrect);
     return result;
 }
 
-Console.Write("Введите ряд целых чисел, разделяя их пробелом: ");
+Console.WriteLine("Введите ряд целых чисел, разделяя их пробелом: ");
 int[] enteredNumbers = IntSpaceSeparetedInput(Console.ReadLine(), out bool areNum);
 Console.WriteLine(String.Join(", ", enteredNumbers));
 if (areNum)
 {
-    int countPos = 0;
+    int countPosit = 0;
     foreach (var item in enteredNumbers)
     {
-        if (item > 0) countPos++;
+        if (item > 0) countPosit++;
     }
-    Console.WriteLine($"Количество чисел больше нуля в введенном ряду: {countPos}");
+    Console.WriteLine($"Количество чисел больше нуля в введенном ряду: {countPosit}");
 }
 else
 {
